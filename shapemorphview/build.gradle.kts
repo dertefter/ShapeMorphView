@@ -51,7 +51,7 @@ tasks.register("decodeSecretKey") {
     }
 }
 
-tasks.named("publish").configure {
+tasks.withType<Sign>().configureEach {
     dependsOn("decodeSecretKey")
 }
 
