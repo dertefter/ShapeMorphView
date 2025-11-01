@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\dertefter\AndroidStudioProjects\ShapeMorphViewSample\shapemorphview\src\main\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~:!&lt;dir>navigation"><source path="C:\Users\dertefter\AndroidStudioProjects\ShapeMorphViewSample\shapemorphview\src\main\res"><file path="C:\Users\dertefter\AndroidStudioProjects\ShapeMorphViewSample\shapemorphview\src\main\res\values\attrs.xml" qualifiers=""><declare-styleable name="ShapeMorphView">
+        <attr format="integer" name="animationDuration"/>
+        <attr format="reference" name="imageResource"/>
+        <attr format="color" name="bgColor"/>
+        <attr format="enum" name="shape">
+            <enum name="CIRCLE" value="0"/>
+            <enum name="SQUARE" value="1"/>
+            <enum name="SLANTED_SQUARE" value="2"/>
+            <enum name="ARCH" value="3"/>
+            <enum name="FAN" value="4"/>
+            <enum name="ARROW" value="5"/>
+            <enum name="SEMI_CIRCLE" value="6"/>
+            <enum name="OVAL" value="7"/>
+            <enum name="PILL" value="8"/>
+            <enum name="TRIANGLE" value="9"/>
+            <enum name="DIAMOND" value="10"/>
+            <enum name="CLAM_SHELL" value="11"/>
+            <enum name="PENTAGON" value="12"/>
+            <enum name="GEM" value="13"/>
+            <enum name="SUNNY" value="14"/>
+            <enum name="VERY_SUNNY" value="15"/>
+            <enum name="COOKIE_4" value="16"/>
+            <enum name="COOKIE_6" value="17"/>
+            <enum name="COOKIE_7" value="18"/>
+            <enum name="COOKIE_9" value="19"/>
+            <enum name="COOKIE_12" value="20"/>
+            <enum name="GHOSTISH" value="21"/>
+            <enum name="CLOVER_4" value="22"/>
+            <enum name="CLOVER_8" value="23"/>
+            <enum name="BURST" value="24"/>
+            <enum name="SOFT_BURST" value="25"/>
+            <enum name="BOOM" value="26"/>
+            <enum name="SOFT_BOOM" value="27"/>
+            <enum name="FLOWER" value="28"/>
+            <enum name="PUFFY" value="29"/>
+            <enum name="PUFFY_DIAMOND" value="30"/>
+            <enum name="PIXEL_CIRCLE" value="31"/>
+            <enum name="PIXEL_TRIANGLE" value="32"/>
+            <enum name="BUN" value="33"/>
+            <enum name="HEART" value="34"/>
+        </attr>
+
+    </declare-styleable></file></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="release$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\dertefter\AndroidStudioProjects\ShapeMorphViewSample\shapemorphview\src\release\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="release" generated-set="release$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~:!&lt;dir>navigation"><source path="C:\Users\dertefter\AndroidStudioProjects\ShapeMorphViewSample\shapemorphview\src\release\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Users\dertefter\AndroidStudioProjects\ShapeMorphViewSample\shapemorphview\build\generated\res\resValues\release"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~:!&lt;dir>navigation"><source path="C:\Users\dertefter\AndroidStudioProjects\ShapeMorphViewSample\shapemorphview\build\generated\res\resValues\release"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="ShapeMorphView">
+        <attr format="integer" name="animationDuration"/>
+        <attr format="reference" name="imageResource"/>
+        <attr format="color" name="bgColor"/>
+        <attr format="enum" name="shape">
+            <enum name="CIRCLE" value="0"/>
+            <enum name="SQUARE" value="1"/>
+            <enum name="SLANTED_SQUARE" value="2"/>
+            <enum name="ARCH" value="3"/>
+            <enum name="FAN" value="4"/>
+            <enum name="ARROW" value="5"/>
+            <enum name="SEMI_CIRCLE" value="6"/>
+            <enum name="OVAL" value="7"/>
+            <enum name="PILL" value="8"/>
+            <enum name="TRIANGLE" value="9"/>
+            <enum name="DIAMOND" value="10"/>
+            <enum name="CLAM_SHELL" value="11"/>
+            <enum name="PENTAGON" value="12"/>
+            <enum name="GEM" value="13"/>
+            <enum name="SUNNY" value="14"/>
+            <enum name="VERY_SUNNY" value="15"/>
+            <enum name="COOKIE_4" value="16"/>
+            <enum name="COOKIE_6" value="17"/>
+            <enum name="COOKIE_7" value="18"/>
+            <enum name="COOKIE_9" value="19"/>
+            <enum name="COOKIE_12" value="20"/>
+            <enum name="GHOSTISH" value="21"/>
+            <enum name="CLOVER_4" value="22"/>
+            <enum name="CLOVER_8" value="23"/>
+            <enum name="BURST" value="24"/>
+            <enum name="SOFT_BURST" value="25"/>
+            <enum name="BOOM" value="26"/>
+            <enum name="SOFT_BOOM" value="27"/>
+            <enum name="FLOWER" value="28"/>
+            <enum name="PUFFY" value="29"/>
+            <enum name="PUFFY_DIAMOND" value="30"/>
+            <enum name="PIXEL_CIRCLE" value="31"/>
+            <enum name="PIXEL_TRIANGLE" value="32"/>
+            <enum name="BUN" value="33"/>
+            <enum name="HEART" value="34"/>
+        </attr>
+
+    </declare-styleable></configuration></mergedItems></merger>
