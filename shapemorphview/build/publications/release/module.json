@@ -1,0 +1,120 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.dertefter.shapemorphview",
+    "module": "shapemorphview",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.13"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.2.20"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "shapemorphview-1.0.0.aar",
+          "url": "shapemorphview-1.0.0.aar",
+          "size": 23253,
+          "sha512": "fd3b2dd93dfca3b91e21cefc3df1ec6d1bd1d6ba6f48f224240df90ebeb00d3420823a84fe12e3f4863b6fd79a1154c6386d2042fa3efa75f01a509958c4b6bc",
+          "sha256": "fd2b767af83ff20a246d84d7c8e18eab786eae978a3dba242b6240bc16579087",
+          "sha1": "446fbaca48806a6899630e5b2bbe91f28fe7b268",
+          "md5": "9cd101cbd2cdf55b062db880a39fe2e9"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimeElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.core",
+          "module": "core-ktx",
+          "version": {
+            "requires": "1.17.0"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.7.1"
+          }
+        },
+        {
+          "group": "com.google.android.material",
+          "module": "material",
+          "version": {
+            "requires": "1.14.0-alpha06"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.2.20"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "shapemorphview-1.0.0.aar",
+          "url": "shapemorphview-1.0.0.aar",
+          "size": 23253,
+          "sha512": "fd3b2dd93dfca3b91e21cefc3df1ec6d1bd1d6ba6f48f224240df90ebeb00d3420823a84fe12e3f4863b6fd79a1154c6386d2042fa3efa75f01a509958c4b6bc",
+          "sha256": "fd2b767af83ff20a246d84d7c8e18eab786eae978a3dba242b6240bc16579087",
+          "sha1": "446fbaca48806a6899630e5b2bbe91f28fe7b268",
+          "md5": "9cd101cbd2cdf55b062db880a39fe2e9"
+        }
+      ]
+    },
+    {
+      "name": "releaseSourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "files": [
+        {
+          "name": "shapemorphview-1.0.0-sources.jar",
+          "url": "shapemorphview-1.0.0-sources.jar",
+          "size": 10595,
+          "sha512": "0c81dadead9e5027669d7678f0912664f5d340889d45e9dbfc8d90552c91206887a2940032b9665ae64486e5acebd367ffd2e51c2c74b5a3bf1aa5f6578e20d9",
+          "sha256": "57f922c801a2800b40a5cd9475d858fac2f6c82945cba93c1c2f9214a31ce351",
+          "sha1": "8c101ad625af1cb98975bd986b651e8140c7c2ae",
+          "md5": "a9d61286ffd60dbd3dc56ef4d1f18474"
+        }
+      ]
+    }
+  ]
+}
