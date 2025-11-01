@@ -1,3 +1,5 @@
+import java.util.Base64
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -37,6 +39,20 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+}
+
+
+tasks.register("decodeSecretKey") {
+    val encoded = System.getenv("SIGNING_SECRET_KEY_RING_FILE")
+    if (encoded != null) {
+        val decoded = Base64.getDecoder().decode(encoded)
+        val file = file("secret.gpg")
+        file.writeBytes(decoded)
+    }
+}
+
+tasks.named("publish").configure {
+    dependsOn("decodeSecretKey")
 }
 
 
