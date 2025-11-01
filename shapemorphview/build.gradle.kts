@@ -43,15 +43,23 @@ dependencies {
 
 
 tasks.register("decodeSecretKey") {
-    val encoded = System.getenv("SIGNING_SECRET_KEY_RING_FILE")
-    if (encoded != null) {
+    doLast {
+        val encoded = System.getenv("SIGNING_SECRET_KEY_RING_FILE")
+        if (encoded.isNullOrBlank()) {
+            throw GradleException("SIGNING_SECRET_KEY_RING_FILE is not set")
+        }
         val decoded = Base64.getDecoder().decode(encoded)
         val file = file("secret.gpg")
         file.writeBytes(decoded)
+        println("✅ secret.gpg file created at: ${file.absolutePath}")
     }
 }
 
-tasks.named("publish").configure {
+tasks.withType<Sign>().configureEach {
+    dependsOn("decodeSecretKey")
+}
+
+tasks.matching { it.name.contains("publish", ignoreCase = true) }.configureEach {
     dependsOn("decodeSecretKey")
 }
 

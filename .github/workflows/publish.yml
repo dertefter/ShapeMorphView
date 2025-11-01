@@ -4,37 +4,52 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
 
 jobs:
   publish:
+    name: Publish
     runs-on: ubuntu-latest
-
+    env:
+    # дополнительные env если нужно
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Set up Java
+      - name: Set up JDK 11
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: '11'
           cache: gradle
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      - name: Import GPG private key
+        # импортирует ваш ASCII-armored приватный ключ в ключницу gpg
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Decode GPG key
+      - name: Verify GPG keys
         run: |
-          echo "${SIGNING_SECRET_KEY_RING_FILE}" | base64 --decode > shapemorphview/secret.gpg
+          echo "GPG keys:"
+          gpg --list-secret-keys --keyid-format LONG
 
-      - name: Publish library to Maven Central
+      - name: Publish to Maven Central (Gradle)
         env:
-          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
-          MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
-          SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
-          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
-          SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
-        run: ./gradlew publishAndReleaseToMavenCentral --no-daemon --stacktrace
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          # Показываем версию gradle (диагностика)
+          ./gradlew --version
+
+          ./gradlew publishToMavenCentral \
+            -PmavenCentralUsername="${OSSRH_USERNAME}" \
+            -PmavenCentralPassword="${OSSRH_PASSWORD}" \
+            -Psigning.keyId="${GPG_KEY_ID}" \
+            -Psigning.password="${GPG_PASSPHRASE}" \
+            --no-daemon --stacktrace
