@@ -37,5 +37,5 @@ jobs:
           ./gradlew publishAndReleaseToMavenCentral \
             -Psigning.keyId=${SIGNING_KEY_ID} \
             -Psigning.password=${SIGNING_PASSWORD} \
-            -Psigning.secretKeyRingFile=shapemorphview/secret.gpg \
+            -Psigning.secretKeyRingFile=secret.gpg \
             --no-daemon --stacktrace
