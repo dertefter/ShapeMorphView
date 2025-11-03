@@ -98,3 +98,8 @@ shapeMorphView.animationDuration = 500
     animate = true
 )
 ```
+
+## Лицензия
+
+Эта библиотека распространяется под лицензией **MIT**.  
+Подробнее см. [LICENSE](LICENSE).
