@@ -36,12 +36,11 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
     implementation(libs.material)
 }
 
 mavenPublishing {
-    coordinates("io.github.dertefter", "shapemorphview", "0.0.2")
+    coordinates("io.github.dertefter", "shapemorphview", "0.0.3")
 
     publishToMavenCentral()
     signAllPublications()
