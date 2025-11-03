@@ -41,7 +41,7 @@ dependencies {
 }
 
 mavenPublishing {
-    coordinates("com.dertefter.shapemorphview", "shapemorphview", "0.0.2")
+    coordinates("io.github.dertefter", "shapemorphview", "0.0.2")
 
     publishToMavenCentral()
     signAllPublications()
@@ -70,3 +70,4 @@ mavenPublishing {
         }
     }
 }
+
