@@ -65,7 +65,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="4dp"
             android:layout_weight="1"
-            android:text="@string/next_image"
+            android:text="@string/next_shape"
             app:icon="@drawable/ic_next"
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />
 

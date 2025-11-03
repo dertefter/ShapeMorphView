@@ -67,6 +67,8 @@ shapeMorphView.morphToShape(
 )
 ```
 
+Форму можно выбрать из `com.dertefter.shapemorphview.Shape`
+
 Установить случайную форму можно следующим образом:
 ```kotlin
 shapeMorphView.morphToShape(
@@ -77,4 +79,24 @@ shapeMorphView.morphToShape(
 Вы также можете просто не передавать форму если хотите получить морфинг до случайной формы:
 ```kotlin
 shapeMorphView.morphToShape()
+```
+
+## Скорость анимации морфинга
+
+Вы можете задавать скорость анимации программно:
+```kotlin
+shapeMorphView.animationDuration = 500
+```
+
+## Изображения
+
+![shapes](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm0c35amt-1.png?alt=media&token=ab563092-217d-4d71-986d-1b4d87b5ba3e)
+
+Вы можете выполнить смену изображения с морфингом до фигуры таким образом:
+```kotlin
+ binding.smv.setDrawableResId(
+    resId = R.drawable.your_drawable,
+    newShape = null, // случайная форма
+    animate = true
+)
 ```
