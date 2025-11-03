@@ -53,11 +53,7 @@ dependencies {
 
 `CIRCLE`, `SQUARE`, `SLANTED_SQUARE`, `ARCH`, `FAN`, `ARROW`, `SEMI_CIRCLE`, `OVAL`, `PILL`, `TRIANGLE`, `DIAMOND`, `CLAM_SHELL`, `PENTAGON`, `GEM`, `SUNNY`, `VERY_SUNNY`, `COOKIE_4`, `COOKIE_6`, `COOKIE_7`, `COOKIE_9`, `COOKIE_12`, `GHOSTISH`, `CLOVER_4`, `CLOVER_8`, `BURST`, `SOFT_BURST`, `BOOM`, `SOFT_BOOM`, `FLOWER`, `PUFFY`, `PUFFY_DIAMOND`, `PIXEL_CIRCLE`, `PIXEL_TRIANGLE`, `BUN`, `HEART`
 
-![shapes](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm0c3rf47-3.png?alt=media&token=1a6cef2c-83d4-4855-9b91-8121f8a8a0ae)
-
 ## Морфинг форм
-
-
 
 Сменить форму можно с помощью `morphToShape`. 
 
@@ -92,7 +88,7 @@ shapeMorphView.animationDuration = 500
 
 ## Изображения
 
-![shapes](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm0c35amt-1.png?alt=media&token=ab563092-217d-4d71-986d-1b4d87b5ba3e)
+![gif1.gif](art/gif1.gif)
 
 Вы можете выполнить смену изображения с морфингом до фигуры таким образом:
 ```kotlin
@@ -102,4 +98,3 @@ shapeMorphView.animationDuration = 500
     animate = true
 )
 ```
-![gif1.gif](art/gif1.gif)
