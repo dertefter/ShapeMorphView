@@ -52,3 +52,29 @@ dependencies {
 `CIRCLE`, `SQUARE`, `SLANTED_SQUARE`, `ARCH`, `FAN`, `ARROW`, `SEMI_CIRCLE`, `OVAL`, `PILL`, `TRIANGLE`, `DIAMOND`, `CLAM_SHELL`, `PENTAGON`, `GEM`, `SUNNY`, `VERY_SUNNY`, `COOKIE_4`, `COOKIE_6`, `COOKIE_7`, `COOKIE_9`, `COOKIE_12`, `GHOSTISH`, `CLOVER_4`, `CLOVER_8`, `BURST`, `SOFT_BURST`, `BOOM`, `SOFT_BOOM`, `FLOWER`, `PUFFY`, `PUFFY_DIAMOND`, `PIXEL_CIRCLE`, `PIXEL_TRIANGLE`, `BUN`, `HEART`
 
 ![shapes](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm0c3rf47-3.png?alt=media&token=1a6cef2c-83d4-4855-9b91-8121f8a8a0ae)
+
+## Морфинг форм
+
+![gif1.gif](art/gif1.gif)
+
+Сменить форму можно с помощью `morphToShape`. 
+
+Установить конкретную форму можно следующим образом:
+```kotlin
+shapeMorphView.morphToShape(
+    newShape = Shape.ARCH,
+    animate = true // c анимацией или без, по умолчанию true
+)
+```
+
+Установить случайную форму можно следующим образом:
+```kotlin
+shapeMorphView.morphToShape(
+    newShape = shapeMorphView.getRandomShape(), 
+    animate = true
+)
+```
+Вы также можете просто не передавать форму если хотите получить морфинг до случайной формы:
+```kotlin
+shapeMorphView.morphToShape()
+```

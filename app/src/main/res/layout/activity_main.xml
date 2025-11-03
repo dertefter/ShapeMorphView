@@ -57,6 +57,18 @@
                 app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/nextShapeButton"
+            style="@style/Widget.Material3Expressive.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="@string/next_image"
+            app:icon="@drawable/ic_next"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"

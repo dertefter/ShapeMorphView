@@ -90,6 +90,27 @@ class ShapeMorphView @JvmOverloads constructor(
         }
     }
 
+    fun morphToShape(newShape: Shape? = null, animate: Boolean = true) {
+        cancelAnimations()
+        val targetShape = newShape ?: getRandomShape()
+
+        if (!animate) {
+            currentShape = targetShape
+            morph = null
+            progress = 0f
+        } else {
+            nextShape = targetShape
+            morph = Morph(currentShape.toMaterialShapeReflective(), nextShape.toMaterialShapeReflective())
+
+            progressAnimator = animateFloat("progress", 0f, 1f, animationDuration.toLong()) {
+                currentShape = nextShape
+                morph = null
+                progress = 0f
+            }
+        }
+        invalidate()
+    }
+
     private fun loadBitmapFromDrawable(@DrawableRes resId: Int, onLoaded: (Bitmap) -> Unit) {
         if (width <= 0 || height <= 0) {
             post { loadBitmapFromDrawable(resId, onLoaded) }

@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.dertefter.shapemorphview.Shape
 import com.dertefter.shapemorphviewsample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -37,12 +38,19 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        binding.nextShapeButton.setOnClickListener {
+            binding.smv.morphToShape()
+
+        }
+
+
         binding.nextImageButton.setOnClickListener {
+
             val nextId = ids.filter { it != currentImageId }.random()
             currentImageId = nextId
             binding.smv.setDrawableResId(
                 resId = nextId,
-                newShape = null,
+                newShape = null, // random shape
                 animate = binding.animateCheckbox.isChecked
             )
         }
@@ -52,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             currentIconId = nextId
             binding.smv.setDrawableResId(
                 resId = nextId,
-                newShape = null,
+                newShape = null, // random shape
                 animate = binding.animateCheckbox.isChecked
             )
         }
