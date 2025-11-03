@@ -47,6 +47,8 @@ dependencies {
 
 ## Формы
 
+![shapes](art/gif2.gif)
+
 Библиотка поддерживает 35 форм из Material 3 Expressive:
 
 `CIRCLE`, `SQUARE`, `SLANTED_SQUARE`, `ARCH`, `FAN`, `ARROW`, `SEMI_CIRCLE`, `OVAL`, `PILL`, `TRIANGLE`, `DIAMOND`, `CLAM_SHELL`, `PENTAGON`, `GEM`, `SUNNY`, `VERY_SUNNY`, `COOKIE_4`, `COOKIE_6`, `COOKIE_7`, `COOKIE_9`, `COOKIE_12`, `GHOSTISH`, `CLOVER_4`, `CLOVER_8`, `BURST`, `SOFT_BURST`, `BOOM`, `SOFT_BOOM`, `FLOWER`, `PUFFY`, `PUFFY_DIAMOND`, `PIXEL_CIRCLE`, `PIXEL_TRIANGLE`, `BUN`, `HEART`
@@ -55,7 +57,7 @@ dependencies {
 
 ## Морфинг форм
 
-![gif1.gif](art/gif1.gif)
+
 
 Сменить форму можно с помощью `morphToShape`. 
 
@@ -100,3 +102,4 @@ shapeMorphView.animationDuration = 500
     animate = true
 )
 ```
+![gif1.gif](art/gif1.gif)
