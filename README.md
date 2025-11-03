@@ -12,8 +12,6 @@
 - Image change with morph animation
 - Customizable animation duration
 
----
-
 ## Sample App
 
 The project includes a [simple app](app/src/main/java/com/dertefter/shapemorphviewsample). You might find it useful.
