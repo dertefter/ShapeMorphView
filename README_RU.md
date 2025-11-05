@@ -1,3 +1,5 @@
+![Language](https://img.shields.io/badge/Language-Russian%20🇷🇺-blue?style=flat-square)
+
 # ShapeMorphView
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.dertefter/shapemorphview.svg?label=Maven%20Central&style=for-the-badge)](https://central.sonatype.com/artifact/io.github.dertefter/shapemorphview)
