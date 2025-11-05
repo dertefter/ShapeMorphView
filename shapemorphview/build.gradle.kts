@@ -40,14 +40,14 @@ dependencies {
 }
 
 mavenPublishing {
-    coordinates("io.github.dertefter", "shapemorphview", "0.0.3")
+    coordinates("io.github.dertefter", "shapemorphview", "0.0.4")
 
     publishToMavenCentral()
     signAllPublications()
 
     pom {
         name.set("ShapeMorphView")
-        description.set("Custom view for shape morphing animation.")
+        description.set("Custom view for shape morphing animation. Supports Material 3 Expressive shapes and shape morphing")
         url.set("https://github.com/dertefter/ShapeMorphView")
         licenses {
             license {
