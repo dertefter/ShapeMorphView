@@ -4,7 +4,10 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.*
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.RippleDrawable
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.PathInterpolator
@@ -15,6 +18,7 @@ import androidx.core.graphics.createBitmap
 import androidx.core.graphics.withSave
 import androidx.graphics.shapes.Morph
 import androidx.graphics.shapes.toPath
+import com.google.android.material.R
 import com.google.android.material.color.MaterialColors
 import kotlinx.coroutines.*
 import kotlin.math.max
@@ -27,7 +31,7 @@ class ShapeMorphView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     var animationDuration: Int = 500
-    private var bgColor = MaterialColors.getColor(this, com.google.android.material.R.attr.colorSurfaceContainerHigh, Color.GRAY)
+    private var bgColor = MaterialColors.getColor(this, R.attr.colorSurfaceContainerHigh, Color.GRAY)
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.FILL; color = bgColor }
     private val path = Path()
     private val scaleMatrix = Matrix()
@@ -49,12 +53,14 @@ class ShapeMorphView @JvmOverloads constructor(
     private var crossfadeAnimator: ObjectAnimator? = null
     private var progressAnimator: ObjectAnimator? = null
 
+    private val rippleDrawable: RippleDrawable
+
     init {
-        context.withStyledAttributes(attrs, R.styleable.ShapeMorphView, defStyleAttr, 0) {
-            animationDuration = getInt(R.styleable.ShapeMorphView_animationDuration, animationDuration)
-            bgColor = getColor(R.styleable.ShapeMorphView_bgColor, bgColor).also { paint.color = it }
-            val resId = getResourceId(R.styleable.ShapeMorphView_imageResource, -1)
-            val selectedShape = getInt(R.styleable.ShapeMorphView_shape, -1)
+        context.withStyledAttributes(attrs, com.dertefter.shapemorphview.R.styleable.ShapeMorphView, defStyleAttr, 0) {
+            animationDuration = getInt(com.dertefter.shapemorphview.R.styleable.ShapeMorphView_animationDuration, animationDuration)
+            bgColor = getColor(com.dertefter.shapemorphview.R.styleable.ShapeMorphView_bgColor, bgColor).also { paint.color = it }
+            val resId = getResourceId(com.dertefter.shapemorphview.R.styleable.ShapeMorphView_imageResource, -1)
+            val selectedShape = getInt(com.dertefter.shapemorphview.R.styleable.ShapeMorphView_shape, -1)
             currentShape = if (selectedShape != -1) Shape.entries[selectedShape] else getRandomShape()
 
             if (resId != -1) {
@@ -62,6 +68,30 @@ class ShapeMorphView @JvmOverloads constructor(
                 if (!isInEditMode) setDrawableResId(resId, currentShape, false)
             }
         }
+        val rippleColor = MaterialColors.getColor(this, R.attr.colorSurfaceContainer, Color.GRAY)
+        rippleDrawable = RippleDrawable(ColorStateList.valueOf(rippleColor), null, null)
+        rippleDrawable.callback = this
+        isClickable = true
+    }
+
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        rippleDrawable.setBounds(0, 0, w, h)
+    }
+
+    override fun verifyDrawable(who: Drawable): Boolean {
+        return super.verifyDrawable(who) || who == rippleDrawable
+    }
+
+    override fun drawableStateChanged() {
+        super.drawableStateChanged()
+        rippleDrawable.state = drawableState
+        invalidate()
+    }
+
+    override fun drawableHotspotChanged(x: Float, y: Float) {
+        super.drawableHotspotChanged(x, y)
+        rippleDrawable.setHotspot(x, y)
     }
 
     fun setDrawableResId(@DrawableRes resId: Int?, newShape: Shape? = null, animate: Boolean = true) {
@@ -229,6 +259,7 @@ class ShapeMorphView @JvmOverloads constructor(
             clipPath(path)
             drawPath(path, paint)
             drawCrossfadedBitmaps()
+            rippleDrawable.draw(canvas)
         }
     }
 
