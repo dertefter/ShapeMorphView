@@ -1,88 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:liftOnScroll="true">
-
-        <com.dertefter.shapemorphview.ShapeMorphView
-            android:id="@+id/smv"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            app:animationDuration="500"
-            app:bgColor="?attr/colorPrimaryContainer"
-            app:imageResource="@drawable/ic_1"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
-            app:shape="SLANTED_SQUARE" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/nextIconButton"
-                style="@style/Widget.Material3Expressive.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:text="@string/next_icon"
-                app:icon="@drawable/ic_next"
-                app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />
-
-            <Button
-                android:id="@+id/nextImageButton"
-                style="@style/Widget.Material3Expressive.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:text="@string/next_image"
-                app:icon="@drawable/ic_next"
-                app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/nextShapeButton"
-            style="@style/Widget.Material3Expressive.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:text="@string/next_shape"
-            app:icon="@drawable/ic_next"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="@string/settings"/>
-
-    </com.google.android.material.appbar.AppBarLayout>
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurfaceContainerLow">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
 
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -91,27 +19,115 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/anim_duration" />
+            <com.dertefter.shapemorphview.ShapeMorphView
+                android:id="@+id/smv"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                app:animationDuration="500"
+                app:bgColor="?attr/colorOnPrimaryContainer"
+                app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+                app:shape="SLANTED_SQUARE" />
 
-            <com.google.android.material.slider.Slider
-                android:id="@+id/animationDuration"
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Filled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:value="500.0"
-                android:valueFrom="0.0"
-                android:valueTo="1000.0"
-                app:tickColor="@android:color/transparent" />
+                app:cardBackgroundColor="?attr/colorSecondaryContainer"
+                app:cardCornerRadius="28dp"
+                app:cardUseCompatPadding="false"
+                app:contentPadding="8dp">
 
-            <CheckBox
-                android:id="@+id/animateCheckbox"
+                <Button
+                    android:id="@+id/nextShapeButton"
+                    style="@style/Widget.Material3Expressive.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/next_shape"
+                    app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Filled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/with_animation" />
+                app:cardBackgroundColor="?attr/colorSecondaryContainer"
+                app:cardCornerRadius="28dp"
+                app:cardUseCompatPadding="false"
+                app:contentPadding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/removeImageButton"
+                            style="@style/Widget.Material3Expressive.Button.IconButton.Filled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:backgroundTint="?attr/colorError"
+                            app:icon="@drawable/ic_delete"
+                            app:iconTint="?attr/colorOnError" />
+
+                        <Button
+                            android:id="@+id/nextImageButton"
+                            style="@style/Widget.Material3Expressive.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:text="@string/next_image"
+                            app:icon="@drawable/ic_image"
+                            app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />
+                    </LinearLayout>
+
+
+                    <CheckBox
+                        android:id="@+id/animateCheckbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/with_animation" />
+
+                    <CheckBox
+                        android:id="@+id/withShapeMorph"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/with_shape_morph" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/anim_duration" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/animationDuration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:value="500.0"
+                        android:valueFrom="0.0"
+                        android:valueTo="1000.0"
+                        app:tickColor="@android:color/transparent" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

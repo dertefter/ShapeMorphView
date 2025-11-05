@@ -5,7 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.dertefter.shapemorphview.Shape
 import com.dertefter.shapemorphviewsample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,14 +16,7 @@ class MainActivity : AppCompatActivity() {
         R.drawable.img_4, R.drawable.img_5
     )
 
-    private val idsIcons = listOf(
-        R.drawable.ic_1, R.drawable.ic_2, R.drawable.ic_3,
-        R.drawable.ic_4, R.drawable.ic_5, R.drawable.ic_6,
-        R.drawable.ic_7, R.drawable.ic_8, R.drawable.ic_9
-    )
-
     private var currentImageId: Int? = null
-    private var currentIconId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,29 +32,21 @@ class MainActivity : AppCompatActivity() {
 
         binding.nextShapeButton.setOnClickListener {
             binding.smv.morphToShape()
-
         }
 
 
         binding.nextImageButton.setOnClickListener {
-
             val nextId = ids.filter { it != currentImageId }.random()
             currentImageId = nextId
             binding.smv.setDrawableResId(
                 resId = nextId,
-                newShape = null, // random shape
+                newShape = if (binding.withShapeMorph.isChecked) {binding.smv.getRandomShape()} else {null},
                 animate = binding.animateCheckbox.isChecked
             )
         }
 
-        binding.nextIconButton.setOnClickListener {
-            val nextId = idsIcons.filter { it != currentIconId }.random()
-            currentIconId = nextId
-            binding.smv.setDrawableResId(
-                resId = nextId,
-                newShape = null, // random shape
-                animate = binding.animateCheckbox.isChecked
-            )
+        binding.removeImageButton.setOnClickListener {
+            binding.smv.setDrawableResId(null)
         }
 
         binding.animationDuration.addOnChangeListener { _, value, _ ->

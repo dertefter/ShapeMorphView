@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">ShapeMorphView Sample</string>
-    <string name="next_image">Next image</string>
-    <string name="next_shape">Next shape</string>
+    <string name="next_image">Set random image</string>
+    <string name="next_shape">Set random shape</string>
     <string name="next_icon">Next icon</string>
     <string name="with_animation">With animation</string>
     <string name="settings">Settings</string>
     <string name="anim_duration">Animation duration</string>
+    <string name="with_shape_morph">With shape morphing</string>
 </resources>

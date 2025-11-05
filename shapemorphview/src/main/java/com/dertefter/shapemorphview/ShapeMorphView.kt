@@ -28,10 +28,7 @@ class ShapeMorphView @JvmOverloads constructor(
 
     var animationDuration: Int = 500
     private var bgColor = MaterialColors.getColor(this, com.google.android.material.R.attr.colorSurfaceContainerHigh, Color.GRAY)
-
-    private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        style = Paint.Style.FILL
-    }
+    private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.FILL; color = bgColor }
     private val path = Path()
     private val scaleMatrix = Matrix()
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
@@ -41,7 +38,6 @@ class ShapeMorphView @JvmOverloads constructor(
     private var morph: Morph? = null
     private var currentShape: Shape = getRandomShape()
     private var nextShape: Shape = getRandomShape()
-
     private var imageResId: Int = -1
     private var editorBitmapLoaded = false
 
@@ -53,34 +49,32 @@ class ShapeMorphView @JvmOverloads constructor(
     private var crossfadeAnimator: ObjectAnimator? = null
     private var progressAnimator: ObjectAnimator? = null
 
-    private val boundsRect = RectF()
-    private val tempRect = RectF()
-
     init {
         context.withStyledAttributes(attrs, R.styleable.ShapeMorphView, defStyleAttr, 0) {
             animationDuration = getInt(R.styleable.ShapeMorphView_animationDuration, animationDuration)
-            bgColor = getColor(R.styleable.ShapeMorphView_bgColor, bgColor)
+            bgColor = getColor(R.styleable.ShapeMorphView_bgColor, bgColor).also { paint.color = it }
             val resId = getResourceId(R.styleable.ShapeMorphView_imageResource, -1)
             val selectedShape = getInt(R.styleable.ShapeMorphView_shape, -1)
             currentShape = if (selectedShape != -1) Shape.entries[selectedShape] else getRandomShape()
 
             if (resId != -1) {
-                if (isInEditMode) {
-                    imageResId = resId
-                } else {
-                    setDrawableResId(resId, currentShape, animate = false)
-                }
+                imageResId = resId
+                if (!isInEditMode) setDrawableResId(resId, currentShape, false)
             }
         }
-        paint.color = bgColor
     }
 
-    fun setDrawableResId(@DrawableRes resId: Int, newShape: Shape? = null, animate: Boolean = true) {
-        loadBitmapFromDrawable(resId) { startTransition(it, newShape, animate) }
+    fun setDrawableResId(@DrawableRes resId: Int?, newShape: Shape? = null, animate: Boolean = true) {
+        if (resId == null) {
+            recycleBitmaps()
+            invalidate()
+        } else {
+            loadBitmapFromDrawable(resId) { startTransition(it, newShape, animate) }
+        }
     }
 
     fun setBitmap(bitmap: Bitmap, newShape: Shape? = null, animate: Boolean = true) {
-        if (width <= 0 || height <= 0){
+        if (width <= 0 || height <= 0) {
             post { setBitmap(bitmap, newShape, animate) }
             return
         }
@@ -101,7 +95,6 @@ class ShapeMorphView @JvmOverloads constructor(
         } else {
             nextShape = targetShape
             morph = Morph(currentShape.toMaterialShapeReflective(), nextShape.toMaterialShapeReflective())
-
             progressAnimator = animateFloat("progress", 0f, 1f, animationDuration.toLong()) {
                 currentShape = nextShape
                 morph = null
@@ -131,10 +124,8 @@ class ShapeMorphView @JvmOverloads constructor(
         val dw = drawable.intrinsicWidth.takeIf { it > 0 } ?: size
         val dh = drawable.intrinsicHeight.takeIf { it > 0 } ?: size
         val scale = max(size.toFloat() / dw, size.toFloat() / dh)
-        val left = (size - dw * scale) / 2f
-        val top = (size - dh * scale) / 2f
         withSave {
-            translate(left, top)
+            translate((size - dw * scale) / 2f, (size - dh * scale) / 2f)
             scale(scale, scale)
             drawable.setBounds(0, 0, dw, dh)
             drawable.draw(this)
@@ -146,11 +137,9 @@ class ShapeMorphView @JvmOverloads constructor(
         return createBitmap(size, size).apply {
             Canvas(this).apply {
                 val scale = max(size.toFloat() / src.width, size.toFloat() / src.height)
-                val left = (size - src.width * scale) / 2f
-                val top = (size - src.height * scale) / 2f
                 val matrix = Matrix().apply {
                     postScale(scale, scale)
-                    postTranslate(left, top)
+                    postTranslate((size - src.width * scale) / 2f, (size - src.height * scale) / 2f)
                 }
                 drawBitmap(src, matrix, Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG))
             }
@@ -159,24 +148,21 @@ class ShapeMorphView @JvmOverloads constructor(
 
     private fun startTransition(newBmp: Bitmap, newShape: Shape?, animate: Boolean) {
         cancelAnimations()
-        val targetShape = newShape ?: getRandomShape()
+        val targetShape = newShape ?: currentShape
 
         if (!animate || activeBitmap == null) {
-            activeBitmap?.recycle()
-            pendingBitmap?.recycle()
+            recycleBitmaps()
             activeBitmap = newBmp
             currentShape = targetShape
             morph = null
-            progress = 0f; crossfadeProgress = 0f
+            progress = 0f
+            crossfadeProgress = 0f
         } else {
             pendingBitmap?.recycle()
             pendingBitmap = newBmp
             nextShape = targetShape
             morph = Morph(currentShape.toMaterialShapeReflective(), nextShape.toMaterialShapeReflective())
-
-            progressAnimator = animateFloat("progress", 0f, 1f, animationDuration.toLong()) {
-                completeAnimation()
-            }
+            progressAnimator = animateFloat("progress", 0f, 1f, animationDuration.toLong()) { completeAnimation() }
             crossfadeAnimator = animateFloat("crossfadeProgress", 0f, 1f, (animationDuration * 0.8).toLong())
         }
         invalidate()
@@ -196,7 +182,8 @@ class ShapeMorphView @JvmOverloads constructor(
         pendingBitmap = null
         currentShape = nextShape
         morph = null
-        progress = 0f; crossfadeProgress = 0f
+        progress = 0f
+        crossfadeProgress = 0f
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -207,14 +194,10 @@ class ShapeMorphView @JvmOverloads constructor(
             try {
                 AppCompatResources.getDrawable(context, imageResId)?.let { drawable ->
                     val size = min(measuredWidth, measuredHeight)
-                    val bmp = createBitmap(size, size).apply {
+                    recycleBitmaps()
+                    activeBitmap = createBitmap(size, size).apply {
                         Canvas(this).drawDrawableScaled(drawable, size)
                     }
-
-                    activeBitmap?.recycle()
-                    pendingBitmap?.recycle()
-                    activeBitmap = bmp
-                    pendingBitmap = null
                     morph = null
                     progress = 0f
                     crossfadeProgress = 0f
@@ -229,15 +212,17 @@ class ShapeMorphView @JvmOverloads constructor(
         super.onDraw(canvas)
         val size = min(width, height).toFloat()
         path.reset()
-        (morph?.toPath(progress, path) ?: currentShape.toMaterialShapeReflective().toPath(path))
+        morph?.toPath(progress, path) ?: currentShape.toMaterialShapeReflective().toPath(path)
 
-        path.computeBounds(boundsRect, true)
-        val scale = boundsRect.takeIf { it.width() > 0 && it.height() > 0 }
-            ?.let { min(size / it.width(), size / it.height()) } ?: 1f
+        val bounds = RectF().apply { path.computeBounds(this, true) }
+        val scale = if (bounds.width() > 0 && bounds.height() > 0) {
+            min(size / bounds.width(), size / bounds.height())
+        } else 1f
 
         scaleMatrix.setScale(scale, scale)
         path.transform(scaleMatrix)
-        path.computeBounds(tempRect, true)
+
+        val tempRect = RectF().apply { path.computeBounds(this, true) }
         path.offset((width - tempRect.width()) / 2f - tempRect.left, (height - tempRect.height()) / 2f - tempRect.top)
 
         canvas.withSave {
@@ -259,7 +244,9 @@ class ShapeMorphView @JvmOverloads constructor(
                     drawBitmap(it, left, top, paint)
                 }
                 paint.alpha = 255
-            } else drawBitmap(bmp, left, top, null)
+            } else {
+                drawBitmap(bmp, left, top, null)
+            }
         }
     }
 
@@ -267,15 +254,19 @@ class ShapeMorphView @JvmOverloads constructor(
         super.onDetachedFromWindow()
         cancelAnimations()
         scope.cancel()
-        activeBitmap?.recycle()
-        pendingBitmap?.recycle()
-        activeBitmap = null
-        pendingBitmap = null
+        recycleBitmaps()
     }
 
     private fun cancelAnimations() {
         crossfadeAnimator?.cancel()
         progressAnimator?.cancel()
+    }
+
+    private fun recycleBitmaps() {
+        activeBitmap?.recycle()
+        pendingBitmap?.recycle()
+        activeBitmap = null
+        pendingBitmap = null
     }
 
     fun getRandomShape(): Shape = Shape.entries.random()
