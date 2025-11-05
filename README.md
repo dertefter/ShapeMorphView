@@ -1,4 +1,6 @@
 # ShapeMorphView
+[![lang](https://img.shields.io/badge/lang-🇬🇧_English-blue?style=for-the-badge)](README.md)
+[![lang](https://img.shields.io/badge/lang-🇷🇺_Русский-red?style=for-the-badge)](README_RU.md)
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.dertefter/shapemorphview.svg?label=Maven%20Central&style=for-the-badge)](https://central.sonatype.com/artifact/io.github.dertefter/shapemorphview)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
