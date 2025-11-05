@@ -1,5 +1,9 @@
 # ShapeMorphView
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.dertefter/shapemorphview.svg?label=Maven%20Central&style=for-the-badge)](https://central.sonatype.com/artifact/io.github.dertefter/shapemorphview)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/dertefter/ShapeMorphView?style=for-the-badge)](https://github.com/dertefter/ShapeMorphView/stargazers)
+
 ![banner.png](art/banner.png)
 
 **ShapeMorphView** — ShapeMorphView is a simple library for smooth morphing between different Material 3 Expressive Shapes.
