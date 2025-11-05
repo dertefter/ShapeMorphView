@@ -26,6 +26,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
+                android:clickable="true"
+                android:elevation="100dp"
                 app:animationDuration="500"
                 app:bgColor="?attr/colorOnPrimaryContainer"
                 app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
