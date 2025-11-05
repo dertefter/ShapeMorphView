@@ -2,12 +2,12 @@
 
 ![banner.png](art/banner.png)
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.dertefter/shapemorphview.svg?label=Maven%20Central&style=plastic)](https://central.sonatype.com/artifact/io.github.dertefter/shapemorphview)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=plastic)](LICENSE)
-[![Android](https://img.shields.io/badge/platform-Android-green.svg?style=plastic]()
-[![API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=plastic)]()
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.9%2B-orange.svg?style=plastic)](https://kotlinlang.org/)
-[![GitHub stars](https://img.shields.io/github/stars/dertefter/ShapeMorphView?style=plastic)](https://github.com/dertefter/ShapeMorphView/stargazers)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.dertefter/shapemorphview.svg?label=Maven%20Central&style=for-the-badge)](https://central.sonatype.com/artifact/io.github.dertefter/shapemorphview)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![Android](https://img.shields.io/badge/platform-Android-green.svg?style=for-the-badge]()
+[![API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=for-the-badge)]()
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.9%2B-orange.svg?style=for-the-badge)](https://kotlinlang.org/)
+[![GitHub stars](https://img.shields.io/github/stars/dertefter/ShapeMorphView?style=for-the-badge)](https://github.com/dertefter/ShapeMorphView/stargazers)
 
 **ShapeMorphView** — это простая библиотека для плавного морфинга между разными формами (Shape) из Material 3 Expressive.
 
