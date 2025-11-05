@@ -2,6 +2,12 @@
 
 ![banner.png](art/banner.png)
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.dertefter/shapemorphview.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.dertefter/shapemorphview)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Android](https://img.shields.io/badge/platform-Android-green.svg)]()
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.9%2B-orange.svg)](https://kotlinlang.org/)
+[![API](https://img.shields.io/badge/API-24%2B-brightgreen.svg)](https://developer.android.com/studio/releases/platforms)
+
 **ShapeMorphView** — это простая библиотека для плавного морфинга между разными формами (Shape) из Material 3 Expressive.
 
 ---
@@ -23,7 +29,7 @@
 
 ```kotlin
 dependencies {
-    implementation("io.github.dertefter:shapemorphview:0.0.3")
+    implementation("io.github.dertefter:shapemorphview:0.0.4")
 }
 ```
 
@@ -73,10 +79,6 @@ shapeMorphView.morphToShape(
     animate = true
 )
 ```
-Вы также можете просто не передавать форму если хотите получить морфинг до случайной формы:
-```kotlin
-shapeMorphView.morphToShape()
-```
 
 ## Скорость анимации морфинга
 
@@ -91,9 +93,9 @@ shapeMorphView.animationDuration = 500
 
 Вы можете выполнить смену изображения с морфингом до фигуры таким образом:
 ```kotlin
- binding.smv.setDrawableResId(
+shapeMorphView.setDrawableResId(
     resId = R.drawable.your_drawable,
-    newShape = null, // случайная форма
+    newShape = shapeMorphView.getRandomShape(),
     animate = true
 )
 ```

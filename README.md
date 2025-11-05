@@ -72,10 +72,6 @@ shapeMorphView.morphToShape(
     animate = true
 )
 ```
-You can also simply omit the shape argument if you want to morph to a random shape:
-```kotlin
-shapeMorphView.morphToShape()
-```
 
 ## Morphing Animation Speed
 
@@ -90,9 +86,9 @@ shapeMorphView.animationDuration = 500
 
 You can change the image and morph to a shape like this:
 ```kotlin
- binding.smv.setDrawableResId(
+shapeMorphView.setDrawableResId(
     resId = R.drawable.your_drawable,
-    newShape = null, // random shape
+    newShape = shapeMorphView.getRandomShape(),
     animate = true
 )
 ```
